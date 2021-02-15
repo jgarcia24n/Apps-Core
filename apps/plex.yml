@@ -58,7 +58,7 @@
           traefik.enable: 'true'
           traefik.docker.network: 'proxy'
           traefik.http.routers.plex-secure.entrypoints: 'websecure'
-          traefik.http.routers.plex-secure.rule: 'Host(`{{pgrole}}.{{domain.stdout}}`)'
+          traefik.http.routers.plex-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
 
     - name: 'Set Default Volume - {{extension.stdout}}'
       set_fact:
