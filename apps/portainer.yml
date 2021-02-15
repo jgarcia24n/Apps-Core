@@ -27,7 +27,7 @@
           traefik.enable: 'true'
           traefik.docker.network: 'proxy'
           traefik.http.routers.portainer-secure.entrypoints: 'websecure'
-          traefik.http.routers.portainer-secure.rule: 'Host(`{{cname}}`)'
+          traefik.http.routers.portainer-secure.rule: 'Host(`{{pgrole.cname}}`)'
 
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
