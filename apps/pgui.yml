@@ -36,7 +36,7 @@
           traefik.enable: 'true'
           traefik.docker.network: 'proxy'
           traefik.http.routers.pgui-secure.entrypoints: 'websecure'
-          traefik.http.routers.pgui-secure.rule: 'Host(`{{pgrole}}.{{domain.stdout}}`)'
+          traefik.http.routers.pgui-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
 
     - name: 'Setting PG Volumes'
       set_fact:
