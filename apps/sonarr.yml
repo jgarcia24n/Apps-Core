@@ -33,7 +33,7 @@
           traefik.docker.network: 'proxy'
           traefik.http.routers.sonarr-secure.entrypoints: 'websecure'
           traefik.http.routers.sonarr-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
-          traefik.http.services.plex.loadbalancer.server.port: '{{extport}}'
+          traefik.http.services.sonarr.loadbalancer.server.port: '{{extport}}'
 
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
