@@ -33,7 +33,7 @@
           traefik.enable: 'true'
           traefik.docker.network: 'proxy'
           traefik.http.routers.jellyfin-secure.entrypoints: 'websecure'
-          traefik.http.routers.jellyfin-secure.rule: 'Host(`{{pgrole}}.{{domain.stdout}}`)'
+          traefik.http.routers.jellyfin-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
 
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
