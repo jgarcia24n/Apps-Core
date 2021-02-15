@@ -58,6 +58,6 @@
           - name: plexguide
             aliases:
               - '{{pgrole}}'
-          - proxy
+          - name: proxy
         state: started
         labels: '{{pg_labels}}'
