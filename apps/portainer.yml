@@ -28,6 +28,7 @@
           traefik.docker.network: 'proxy'
           traefik.http.routers.portainer-secure.entrypoints: 'websecure'
           traefik.http.routers.portainer-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
+          traefik.http.services.portainer.loadbalancer.server.port: '9000'
 
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
