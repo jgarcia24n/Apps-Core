@@ -56,17 +56,9 @@
       set_fact:
         default_labels:
           traefik.enable: 'true'
-          traefik.port: '{{intport}}'
-          traefik.frontend.rule: 'Host:{{pgrole}}.{{domain.stdout}}{{tldset}}{{cname}}'
-          traefik.frontend.headers.SSLHost: '{{domain.stdout}}'
-          traefik.frontend.headers.SSLRedirect: 'true'
-          traefik.frontend.headers.STSIncludeSubdomains: 'true'
-          traefik.frontend.headers.STSPreload: 'true'
-          traefik.frontend.headers.STSSeconds: '315360000'
-          traefik.frontend.headers.browserXSSFilter: 'true'
-          traefik.frontend.headers.contentTypeNosniff: 'true'
-          traefik.frontend.headers.customResponseHeaders: 'X-Robots-Tag:noindex,nofollow,nosnippet,noarchive,notranslate,noimageindex'
-          traefik.frontend.headers.forceSTSHeader: 'true'
+          traefik.docker.network: 'proxy'
+          traefik.http.routers.plex-secure.entrypoints: 'websecure'
+          traefik.http.routers.plex-secure.rule: 'Host(`{{pgrole}}.{{domain.stdout}}`)'
 
     - name: 'Set Default Volume - {{extension.stdout}}'
       set_fact:
@@ -199,7 +191,8 @@
         networks:
           - name: plexguide
             aliases:
-              - plex
+              - '{{pgrole}}'
+          - name: proxy
         volumes: '{{default_volumes}}'
         devices: "{{ '/dev/dri:/dev/dri' if dev_dri.stat.exists == True | default(false) else omit }}"
         etc_hosts:
