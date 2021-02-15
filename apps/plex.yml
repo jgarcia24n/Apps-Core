@@ -59,6 +59,7 @@
           traefik.docker.network: 'proxy'
           traefik.http.routers.plex-secure.entrypoints: 'websecure'
           traefik.http.routers.plex-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
+          traefik.http.services.portainer.loadbalancer.server.port: '32400'
 
     - name: 'Set Default Volume - {{extension.stdout}}'
       set_fact:
