@@ -46,6 +46,7 @@
           traefik.docker.network: 'proxy'
           traefik.http.routers.ombi-secure.entrypoints: 'websecure'
           traefik.http.routers.ombi-secure.rule: 'Host(`{{ucname.stdout}}.{{domain.stdout}}`)'
+          traefik.http.services.ombi.loadbalancer.server.port: '{{extport}}'
 
     - name: 'Setting {{pgrole}} Volumes'
       set_fact:
@@ -75,5 +76,6 @@
           - name: plexguide
             aliases:
               - '{{pgrole}}'
+          - name: proxy
         state: started
         labels: '{{pg_labels}}'
