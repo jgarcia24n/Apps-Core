@@ -68,8 +68,11 @@
         volumes: '{{pg_volumes}}'
         env: '{{pg_env}}'
         restart_policy: unless-stopped
-          proxy:
-            external: true
+        networks:
+          - name: plexguide
+            aliases:
+              - '{{pgrole}}'
+          - name: proxy
         expose: '8096'
         state: started
         labels: '{{pg_labels}}'
